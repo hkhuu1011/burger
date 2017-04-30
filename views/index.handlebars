@@ -1,0 +1,26 @@
+<img src="">
+
+<h1>Eat-Da-Burger!</h1>
+
+<!-- Data gets passed via server.js from this point forward. -->
+
+{{#each burgers}}
+
+
+
+{{/each}}
+
+
+<h2>Add a Burger</h2>
+
+{{!-- Form should send a post command to the server --}}
+<form class="create-form" method="post" action="/">
+
+  <div class="form-group">
+    <label for="quo">Burger:</label>
+    <textarea id="quo" name="burger" rows="8" cols="40"></textarea>
+  </div>
+
+  <button type="submit">Submit</button>
+  <p>Enter a burger you want to eat.</p>
+</form>
