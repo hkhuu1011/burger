@@ -1,0 +1,12 @@
+* {
+	background-color: #881f1b;
+	font-family: Arial;
+}
+
+h1, h2, p {
+	color: white;
+}
+
+#quo, #submit {
+	background-color: white;
+}

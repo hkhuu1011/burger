@@ -1,9 +1,12 @@
 var express = require("express");
 var methodOverride = require("method-override");
 var bodyParser = require("body-parser");
+var orm = require ("./config/orm.js");
 
 var app = express();
-var port = 3003;
+var port = 3001;
+
+// var data = orm.selectWhere("burgers", selectWhereCallback);
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/public"));
@@ -13,26 +16,16 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
+
+// Set Handlebars
 var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-var mysql = require("mysql");
+// Import routes and give the server access to them
+var routes = require("./controllers/burgers_controllers.js");
 
-var connection = mysql.createConnection({
-    host    : "localhost",
-    user    : "root",
-    password: "",
-    database: "burgers_db"
-});
+app.use("/", routes);
 
-connection.connect(function(err) {
-    if (err) {
-        console.error("error connecting: " + err.stack);
-        return;
-    }
-    console.log("connected as id " + connection.threadId);
-});
-
-// Home page
+app.listen(port);
