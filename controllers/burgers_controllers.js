@@ -15,12 +15,11 @@ router.get("/", function(req, res) {
 }); // End router.get
 
 router.post("/", function(req, res) {
-	burger.create([
-		"burger_name", "devoured"
-	], [
-		req.body.burger_name, req.body.devoured
-	], function() {
+	console.log("req.body.burger_name: ", req.body.burger_name);
+	burger.create(req.body.burger_name, function(result) {
+
 		res.redirect("/");
+		console.log(result);
 	});
 }); // End router.post
 

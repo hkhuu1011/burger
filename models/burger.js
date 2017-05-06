@@ -7,24 +7,31 @@ var burger = {
     orm.all("burgers", function(res) {
       cb(res);
     });
-  },
+  }, // End all: function
+
   // The variables cols and vals are arrays.
-  create: function(cols, vals, cb) {
-    orm.create("burgers", cols, vals, function(res) {
-      cb(res);
-    });
-  },
+  create: function(name,cb) {
+    orm.create("burgers",[
+    	"burger_name", "devoured"
+    	], 
+    	[ name , false], 
+    	cb);  
+  }, // End create: function
+
   update: function(objColVals, condition, cb) {
-    orm.update("burgers", objColVals, condition, function(res) {
-      cb(res);
+    orm.update("burgers", {
+    	devoured: true}, condition, function(res) {
+      	cb(res);
     });
-  },
-  delete: function(condition, cb) {
+  }, // End update: function 
+
+  delete: function(name, cb) {
     orm.delete("burgers", condition, function(res) {
       cb(res);
     });
-  }
-};
+  } // End delete: function 
+
+}; // End burger variable
 
 // Export the database functions for the controller (burgers_controller.js).
 module.exports = burger;

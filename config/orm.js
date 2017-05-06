@@ -37,6 +37,8 @@ var orm = {
     });
   },
   create: function(table, cols, vals, cb) {
+    console.log("Columns and vals: ", cols, vals);
+
     var queryString = "INSERT INTO " + table;
 
     queryString += " (";
@@ -52,6 +54,7 @@ var orm = {
       if (err) {
         throw err;
       }
+      console.log("result: ",result);
       cb(result);
     });
   },

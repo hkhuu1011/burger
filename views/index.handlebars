@@ -4,6 +4,7 @@
 
 <h1>Eat-Da-Burger!</h1>
 
+
 <!-- Data gets passed via server.js from this point forward. -->
 
 <!-- Burger Uneaten -->
@@ -11,7 +12,7 @@
 	{{#each burgers}}
 		{{#unless this.devoured}}
 			<li>
-	 		{{this.burger_name}}
+	 		{{this.id}} {{this.burger_name}}
 	 			<form action="/{{this.id}}?_method=PUT" method="POST">
 				<input type="hidden"
 				 name="devoured"
@@ -30,7 +31,7 @@
 	{{#each burgers}}
 		{{#if this.devoured}}
 			<li>
-	 		{{this.burger_name}}
+	 		{{this.id}} {{this.burger_name}}
 	 		</li>
 	 	{{/if}}
 	{{/each}}
@@ -38,19 +39,17 @@
 
 
 
-<h2>Add a Burger</h2>
-<p>Enter a burger you want to eat.</p>
+	<h2>Add a Burger</h2>
+	<p>Enter a burger you want to eat.</p>
 
-{{!-- Form should send a post command to the server --}}
-<form class="create-form" method="post" action="/">
-<div class="form-group">
-   <label for="quo"></label>
-   <textarea id="quo" name="burger" rows="4" cols="40"></textarea>
-  </div>
+	{{!-- Form should send a post command to the server --}}
+	<form class="create-form" method="POST" action="/">
+	<div class="form-group">
+	   <label for="quo"></label>
+	   <textarea id="quo" name="burger_name" rows="4" cols="40"></textarea>
+	  </div>
 
-  <button type="submit" id="submit">Submit</button>
+	  <button type="submit" id="submit">Submit</button>
 
-</form>
-
-
+	</form>
 </center>
