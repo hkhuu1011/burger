@@ -1,12 +1,20 @@
 * {
 	background-color: #881f1b;
 	font-family: Arial;
-}
-
-h1, h2, p {
 	color: white;
+	
 }
 
-#quo, #submit {
+.containerbody {
+	background-color: #881f1b;
+}
+
+.containertable {
+	text-align: center;
+	margin: 0% 6% 0% 6%;
+}
+
+#quo {
 	background-color: white;
+	color: black;
 }
