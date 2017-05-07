@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 var orm = require ("./config/orm.js");
 
 var app = express();
-var port = 3001;
+var PORT = process.env.PORT || 3001;
 
 // var data = orm.selectWhere("burgers", selectWhereCallback);
 
@@ -28,4 +28,4 @@ var routes = require("./controllers/burgers_controllers.js");
 
 app.use("/", routes);
 
-app.listen(port);
+app.listen(PORT);
